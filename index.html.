@@ -1,1 +1,425 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="edirwnn - Developer Portfolio">
 
+  <title>edirwnn | Developer Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --background: #050816;
+      --blue: #3977ff;
+      --text: #f4f7ff;
+      --muted: #a3afca;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 25px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5, 8, 22, 0.85);
+      backdrop-filter: blur(15px);
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #4d8dff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 70px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          ellipse at 50% 55%,
+          rgba(25, 74, 220, 0.30),
+          transparent 55%
+        );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+    }
+
+    .intro {
+      color: #aab8dc;
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 10vw, 110px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      line-height: 1.1;
+      background: linear-gradient(
+        120deg,
+        #ffffff,
+        #a6c6ff,
+        #4b83ff
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 45px rgba(50, 100, 255, 0.15);
+    }
+
+    .role {
+      margin-top: 25px;
+      color: #b5c9ff;
+      font-size: clamp(20px, 4vw, 32px);
+      letter-spacing: 3px;
+    }
+
+    .description {
+      max-width: 650px;
+      margin: 35px auto;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .button {
+      padding: 17px 28px;
+      border-radius: 50px;
+      border: 1px solid #35466e;
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: #477fff;
+      border-color: #477fff;
+      box-shadow: 0 0 30px rgba(55, 110, 255, 0.3);
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(55, 110, 255, 0.35);
+    }
+
+    .orb {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: #174cff;
+      filter: blur(150px);
+      opacity: 0.14;
+      border-radius: 50%;
+      animation: float 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      from {
+        transform: translate(-100px, -30px);
+      }
+
+      to {
+        transform: translate(120px, 50px);
+      }
+    }
+
+    section:not(.hero) {
+      padding: 100px 8%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 38px;
+      margin-bottom: 25px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 750px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+      );
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      padding: 28px;
+      background: #0b1228;
+      border: 1px solid #1d2b4d;
+      border-radius: 16px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #477fff;
+    }
+
+    .card h3 {
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .card a {
+      display: inline-block;
+      color: #8db2ff;
+      margin-top: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 15px;
+      border-top: 1px solid #1d2b4d;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        font-size: 12px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .description {
+        font-size: 15px;
+      }
+
+      section:not(.hero) {
+        padding: 75px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a class="logo" href="#home">
+      <span>&lt;</span>edirwnn<span>/&gt;</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="orb"></div>
+
+    <div class="hero-content">
+      <p class="intro">Hello, I'm</p>
+
+      <h1>EDIRWNN</h1>
+
+      <p class="role">Aspiring Software Developer</p>
+
+      <p class="description">
+        I am passionate about building modern digital experiences,
+        solving real-world problems, and continuously learning
+        new technologies through practical projects.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects" class="button primary">
+          View Projects ↗
+        </a>
+
+        <a href="#contact" class="button">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <p class="section-text">
+      Hello! I'm edirwnn, an aspiring developer who enjoys learning
+      programming and creating useful digital products.
+      My goal is to develop practical solutions and build a
+      strong portfolio through real-world projects.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="section-title">My Skills</h2>
+
+    <p class="section-text">
+      Technologies I'm learning and exploring.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Frontend Development</h3>
+        <p>HTML, CSS, JavaScript and responsive web design.</p>
+      </div>
+
+      <div class="card">
+        <h3>Backend Development</h3>
+        <p>Learning server-side programming and API development.</p>
+      </div>
+
+      <div class="card">
+        <h3>Tools</h3>
+        <p>Git, GitHub, VS Code and modern developer tools.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+
+    <p class="section-text">
+      A selection of projects I'm building to improve my skills.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Developer Portfolio</h3>
+        <p>A personal website showcasing my journey and projects.</p>
+        <a href="#home">Explore Portfolio ↗</a>
+      </div>
+
+      <div class="card">
+        <h3>AI Customer Support Dashboard</h3>
+        <p>
+          A planned e-commerce dashboard concept for managing
+          customer support with AI assistance.
+        </p>
+        <a href="#contact">Project Details ↗</a>
+      </div>
+
+      <div class="card">
+        <h3>More Projects</h3>
+        <p>More projects will be added as I continue learning.</p>
+        <a
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Explore GitHub ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Let's Connect</h2>
+
+    <p class="section-text">
+      Interested in collaborating or discussing a project?
+      Feel free to connect with me on GitHub.
+    </p>
+
+    <div
+      class="buttons"
+      style="justify-content:flex-start;margin-top:25px"
+    >
+      <a
+        href="https://github.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button primary"
+      >
+        Visit My GitHub ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> edirwnn.
+    Built with HTML, CSS & JavaScript.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
+```
